@@ -35,6 +35,17 @@ vignettes/*.pdf
 # Temporary files created by R markdown
 *.utf8.md
 *.knit.md
+*_files/
+
+# LaTeX / Beamer build artifacts
+*.log
+*.aux
+*.out
+*.toc
+*.nav
+*.snm
+*.fls
+*.fdb_latexmk
 
 # R Environment Variables
 .Renviron

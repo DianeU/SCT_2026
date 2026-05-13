@@ -1,0 +1,26 @@
+% rwg-theme.sty
+\ProvidesPackage{rwg-theme}[2026/04/24 RWG Custom Beamer Theme]
+
+\RequirePackage{xcolor}
+\RequirePackage{graphicx}
+
+% --- Color Definitions ---
+\definecolor{RWGBlue}{HTML}{1A337B}
+
+% --- Theme Customizations ---
+\setbeamercolor{title}{fg=RWGBlue}
+\setbeamercolor{frametitle}{fg=RWGBlue}
+\setbeamercolor{structure}{fg=RWGBlue}
+\setbeamertemplate{navigation symbols}{}
+
+% --- Slide numbers ---
+\setbeamertemplate{footline}{
+  \hbox{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,rightskip=2ex]{structure}%
+      \hfill\insertframenumber{}/\inserttotalframenumber\hspace{2ex}%
+    \end{beamercolorbox}%
+  }
+}
+
+% --- Logo ---
+\logo{\includegraphics[height=2cm]{rwg-logo.pdf}}
