@@ -140,7 +140,52 @@ plotSeq(M, plotAllSeq=T, emph = 3)
 - Literature shows that predictability is not an unavoidable consequence of imbalance control.
 - This supports selecting designs by properties, not by historical default.
 
-## Comparison of Predictability Metrics
+## Notation
+
+Let $N$ be the total sample size, $i$ the patient index, and
+$t \in \Omega:=\{0,1\}^N$ a randomization sequence, where
+
+\[
+t_i = \begin{cases}
+1 & i \text{ is allocated to } E\\
+0 & i \text{ is allocated to } C
+\end{cases}
+\]
+
+We call $\Omega$ the set of all sequences. For a sequence $t$,
+
+\begin{align*}
+N_E(i) &:= N_E(t,i) := \sum_{j=1}^i t_j \\
+N_C(i) &:= N_C(t,i) := i - \sum_{j=1}^i t_j
+\end{align*}
+
+define the number of patients in groups $E$ and $C$ after $i$ allocations.
+
+## Predictability Metric: Correct Guesses
+
+-   In the situation of third order selection bias, the investigator can
+    count $N_E(i)$ and $N_C(i)$ respectively.
+
+-   Under the assumption that $N_E(N) = N_C(N)$ for all $t \in \Omega$
+    it makes sense for the investigator to guess 
+    $$g(t_{i+1})= 
+            \begin{cases}
+            0               & N_E(i) > N_C(i)\\
+            Ber(0.5)  & N_E(i) = N_C(i)\\
+            1               & N_E(i) < N_C(i),
+            \end{cases}$$ 
+    following the so called *convergence strategy*.
+
+[[@Blackwell1957]]{style="color: gray"}
+
+## Visualization Correct Guesses
+
+```{r fig-convergence-strategy, echo=FALSE, out.height="0.8\\textheight", fig.align='center'}
+knitr::include_graphics("./graphics/correct-guesses.pdf")
+```
+
+
+## Design Comparison with respect to Predictability
 
 ```{r pred-compare-setup, echo=FALSE, message=FALSE, warning=FALSE}
 N <- 16

@@ -102,6 +102,12 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{cslreferences}%
+  {\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+  {\par}
 
 \title{Restricted Randomization Beyond Permuted Blocks}
 \subtitle{SCT Arizona 2026}
@@ -360,8 +366,56 @@ Randomization?}\label{why-rethink-permuted-block-randomization}}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Comparison of Predictability Metrics}
-\protect\hypertarget{comparison-of-predictability-metrics}{}
+\begin{frame}{Notation}
+\protect\hypertarget{notation}{}
+Let \(N\) be the total sample size, \(i\) the patient index, and
+\(t \in \Omega:=\{0,1\}^N\) a randomization sequence, where
+
+\[
+t_i = \begin{cases}
+1 & i \text{ is allocated to } E\\
+0 & i \text{ is allocated to } C
+\end{cases}
+\]
+
+We call \(\Omega\) the set of all sequences. For a sequence \(t\),
+
+\begin{align*}
+N_E(i) &:= N_E(t,i) := \sum_{j=1}^i t_j \\
+N_C(i) &:= N_C(t,i) := i - \sum_{j=1}^i t_j
+\end{align*}
+
+define the number of patients in groups \(E\) and \(C\) after \(i\)
+allocations.
+\end{frame}
+
+\begin{frame}{Predictability Metric: Correct Guesses}
+\protect\hypertarget{predictability-metric-correct-guesses}{}
+\begin{itemize}
+\item
+  In the situation of third order selection bias, the investigator can
+  count \(N_E(i)\) and \(N_C(i)\) respectively.
+\item
+  Under the assumption that \(N_E(N) = N_C(N)\) for all \(t \in \Omega\)
+  it makes sense for the investigator to guess \[g(t_{i+1})= 
+          \begin{cases}
+          0               & N_E(i) > N_C(i)\\
+          Ber(0.5)  & N_E(i) = N_C(i)\\
+          1               & N_E(i) < N_C(i),
+          \end{cases}\] following the so called \emph{convergence
+  strategy}.
+\end{itemize}
+
+{(Blackwell and Hodges 1957)}
+\end{frame}
+
+\begin{frame}{Visualization Correct Guesses}
+\protect\hypertarget{visualization-correct-guesses}{}
+\begin{center}\includegraphics[height=0.8\textheight]{./graphics/correct-guesses} \end{center}
+\end{frame}
+
+\begin{frame}{Design Comparison with respect to Predictability}
+\protect\hypertarget{design-comparison-with-respect-to-predictability}{}
 \includegraphics[height=0.8\textheight]{slides_SCT_Uschner_files/figure-beamer/pred-compare-plot-1}
 \end{frame}
 
@@ -420,6 +474,13 @@ Randomization?}\label{why-rethink-permuted-block-randomization}}
   Should we update internal default randomization recommendations beyond
   permuted blocks?
 \end{itemize}
+
+\hypertarget{refs}{}
+\begin{cslreferences}
+\leavevmode\hypertarget{ref-Blackwell1957}{}%
+Blackwell, D., and J. Hodges. 1957. ``Design for the Control of
+Selection Bias.'' \emph{Annals of Mathematical Statistics} 25: 449--60.
+\end{cslreferences}
 \end{frame}
 
 \end{document}
