@@ -174,7 +174,9 @@ define the number of patients in groups $E$ and $C$ after $i$ allocations.
             Ber(0.5)  & N_E(i) = N_C(i)\\
             1               & N_E(i) < N_C(i),
             \end{cases}$$ 
-    following the so called *convergence strategy*.
+    following the so called *convergence strategy*. 
+
+- The number of correct guesses of a randomization sequence is then $CG(t) := \sum_{i=1}^{N-1} g(t_{i+1})$, and the proportion of correct guesses is $CG(t)/N$.
 
 [[@Blackwell1957]]{style="color: gray"}
 
